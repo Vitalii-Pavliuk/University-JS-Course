@@ -1,14 +1,9 @@
-console.log(triangle(7, "leg", 18, "hypotenuse"));
-console.log(triangle(60, "opposite angle", 5, "leg"));
-console.log(triangle(43.13, "angle", -2, "hypotenuse"));
-console.log(triangle(0.00000001, "leg", 10000000, "leg"));
 
 function triangle(value1, type1, value2, type2) {
     const toRadians = (deg) => deg * (Math.PI / 180);
     const toDegrees = (rad) => rad * (180 / Math.PI);
-    
-    const MIN_VALUE = 1e-6;
-    const MAX_VALUE = 1e6;
+    const MIN_VALUE = 1e-4;
+    const MAX_VALUE = 1e4;
     
     if (value1 <= 0 || value2 <= 0) return "Значення мають бути додатними";
     if (value1 < MIN_VALUE || value1 > MAX_VALUE || value2 < MIN_VALUE || value2 > MAX_VALUE) {
@@ -72,3 +67,8 @@ function triangle(value1, type1, value2, type2) {
     console.log(`alpha = ${alpha.toFixed(2)}°, beta = ${beta.toFixed(2)}°`);
     return "Успіх!";
 }
+
+console.log(triangle(7, "leg", 18, "hypotenuse"));
+console.log(triangle(60, "opposite angle", 5, "leg"));
+console.log(triangle(43.13, "angle", -2, "hypotenuse"));
+console.log(triangle(0.111, "leg", 10109, "leg"));
