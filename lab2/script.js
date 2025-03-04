@@ -106,6 +106,14 @@ class Square {
         console.log("Square: four equal sides and four right angles.");
     }
 
+    get side() {
+        return this.a;
+    }
+
+    set side(value) {
+        this.a = value;
+    }
+
     length() {
         console.log(`Perimeter: ${this.a * 4}`);
     }
@@ -130,6 +138,14 @@ class Rectangle extends Square {
 
     static help() {
         console.log("Rectangle: opposite sides are equal, four right angles.");
+    }
+
+    get width() {
+        return this.b;
+    }
+
+    set width(value) {
+        this.b = value;
     }
 
     length() {
@@ -157,6 +173,22 @@ class Rhombus extends Square {
 
     static help() {
         console.log("Rhombus: four equal sides, opposite angles are equal.");
+    }
+
+    get alphaAngle() {
+        return this.alpha;
+    }
+
+    set alphaAngle(value) {
+        this.alpha = value;
+    }
+
+    get betaAngle() {
+        return this.beta;
+    }
+
+    set betaAngle(value) {
+        this.beta = value;
     }
 
     square() {
