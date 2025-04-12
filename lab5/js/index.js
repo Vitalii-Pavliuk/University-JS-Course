@@ -15,52 +15,110 @@ let timeLeft = 5
 let pixel = null
 let gameTimer = null
 let pixelTimer = null
+let scattering = 0;
+let pixelColor = ""
 
 let getRandomNumber = function (size) {
   return Math.floor(Math.random() * size)
 }
 
+function getDifficulty() {
+  const difficulty = difficultySelect.value
+  console.log(difficulty);
+  switch (difficulty) {
+    case "easy":
+      return { delay: 10, scattering: 8 }
+    case "normal":
+      return { delay: 5, scattering: 4 }
+    case "hard":
+      return { delay: 2, scattering: 2 }
+    default:
+      alert("Ти як це зробив?")
+      return { delay: 100, scattering: 1 }
+  }
+}
+
+function getTarget() {
+  const color = colorSelect.value
+  console.log(color);
+  switch (color) {
+    case "red":
+      return pixelColor = "red";
+    case "green":
+      return pixelColor = "green";
+    case "blue":
+      return pixelColor = "blue";
+    default:
+      alert("Ти як це зробив?")
+      return pixelColor = "black";
+  }
+}
+
+
 function start() {
+  const { delay, scattering } = getDifficulty()
+  getTarget()
   menuContainer.style.display = "none"
+  gameOverScreen.style.display = "none"
   gameContainer.style.display = "contents"
 
-  const width = gameMap.clientWidth - 20
-  const height = gameMap.clientHeight - 20
-
+  score = 0;
+  const width = gameMap.clientWidth 
+  const height = gameMap.clientHeight
+  const spawnWidth = width / scattering
+  const spawnHeight = height / scattering
 
   pixel = document.createElement("div")
-  pixel.style.backgroundColor = "orange"
-  pixel.style.left = `${getRandomNumber(width)}px`
-  pixel.style.top = `${getRandomNumber(height)}px`
+  pixel.className = "pixel"
+  pixel.style.backgroundColor = pixelColor;
+  pixel.style.left = `${getRandomNumber(spawnWidth) + width / 2 - spawnWidth / 2}px`
+  pixel.style.top = `${getRandomNumber(spawnHeight) + height / 2 - spawnHeight / 2}px`
   pixel.style.width = "20px"
   pixel.style.height = "20px"
   pixel.style.position = "absolute"
   gameMap.appendChild(pixel)
 
   pixel.addEventListener("click", function () {
-    pixel.style.left = `${getRandomNumber(width)}px`
-    pixel.style.top = `${getRandomNumber(height)}px`
+
+    
+    pixel.style.left = `${getRandomNumber(spawnWidth) + width / 2 - spawnWidth / 2}px`
+    pixel.style.top = `${getRandomNumber(spawnHeight) + height / 2 - spawnHeight / 2}px`
 
     score += 1
-    pixelTimer()
     scoreDisplay.textContent = score
+
+    restartTimer()
 
     console.log("клік по пікселю")
   })
 
-  function pixelTimer () {
-  gameTimer = setInterval(() => {
-    timeLeft--;
-    timeDisplay.textContent = timeLeft;
+  function restartTimer() {
+    clearInterval(gameTimer)
+    timeLeft = delay
+    timeDisplay.textContent = timeLeft
+    pixelTimer()
+  }
 
-    if (timeLeft <= 0) {
-        clearInterval(gameTimer);
-        console.log("Гра закінчена");
-    }
-}, timeLeft * 1000);
-} 
+  function pixelTimer() {
+    gameTimer = setInterval(() => {
+      timeLeft--
+      timeDisplay.textContent = timeLeft
+      if (timeLeft <= 0) {
+        clearInterval(gameTimer)
+        gameOverScreen.style.display = "unset"
+        gameContainer.style.display = "none"
+        finalScoreDisplay.textContent = score
+        gameMap.removeChild(pixel)
+        console.log("Гра закінчена")
+      }
+    }, 1000)
+  }
 }
 
 startBtn.addEventListener("click", function () {
   start()
 })
+
+restartBtn.addEventListener("click", function () {
+  start()
+})  
