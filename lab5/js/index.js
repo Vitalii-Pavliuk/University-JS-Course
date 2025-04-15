@@ -17,6 +17,7 @@ let gameTimer = null
 let pixelTimer = null
 let scattering = 0;
 let pixelColor = ""
+let pixelSize = 0;
 
 let getRandomNumber = function (size) {
   return Math.floor(Math.random() * size)
@@ -27,11 +28,11 @@ function getDifficulty() {
   console.log(difficulty);
   switch (difficulty) {
     case "easy":
-      return { delay: 10, scattering: 8 }
+      return { delay: 10, scattering: 8, pixelSize: 30 }
     case "normal":
-      return { delay: 5, scattering: 4 }
+      return { delay: 5, scattering: 4, pixelSize: 20}
     case "hard":
-      return { delay: 2, scattering: 2 }
+      return { delay: 2, scattering: 2, pixelSize: 10}
     default:
       alert("Ти як це зробив?")
       return { delay: 100, scattering: 1 }
@@ -56,7 +57,7 @@ function getTarget() {
 
 
 function start() {
-  const { delay, scattering } = getDifficulty()
+  const { delay, scattering, pixelSize } = getDifficulty()
   getTarget()
   menuContainer.style.display = "none"
   gameOverScreen.style.display = "none"
@@ -73,8 +74,8 @@ function start() {
   pixel.style.backgroundColor = pixelColor;
   pixel.style.left = `${getRandomNumber(spawnWidth) + width / 2 - spawnWidth / 2}px`
   pixel.style.top = `${getRandomNumber(spawnHeight) + height / 2 - spawnHeight / 2}px`
-  pixel.style.width = "20px"
-  pixel.style.height = "20px"
+  pixel.style.width = `${pixelSize}px`
+  pixel.style.height = `${pixelSize}px`
   pixel.style.position = "absolute"
   gameMap.appendChild(pixel)
 
@@ -122,3 +123,5 @@ startBtn.addEventListener("click", function () {
 restartBtn.addEventListener("click", function () {
   start()
 })  
+
+// Доробити розмір пікселя
