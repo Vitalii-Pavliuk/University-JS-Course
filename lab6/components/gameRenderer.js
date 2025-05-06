@@ -16,11 +16,11 @@ export const gameRenderer = {
         cell.dataset.col = col;
         cell.addEventListener('click', () => {
           gameLogic.toggleCell(row, col);
-
           this.render(boardElement);
           ui.updateSteps(gameLogic.steps);
           if (gameLogic.checkWin()) {
-            setTimeout(() => alert(`Ви виграли за ${gameLogic.steps} кроків!`), 100);
+            gameLogic.stopTimer();
+            setTimeout(() => alert(`Ви виграли за ${gameLogic.steps} кроків і ${gameLogic.time} секунд!`), 100);
           }
         });
         boardElement.appendChild(cell);
