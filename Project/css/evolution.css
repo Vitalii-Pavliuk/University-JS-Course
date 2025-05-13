@@ -1,0 +1,76 @@
+/* evolution.css - Секция эволюции игры Snake */
+
+/* Сетка карточек */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+/* Карточка эволюции */
+.evo-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.evo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.evo-card img {
+  padding: 15px;
+  height: 180px;
+  object-fit: contain;
+}
+
+.evo-card .card-body {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.evo-card h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.evo-card p {
+  margin-bottom: 15px;
+}
+
+.evo-card .badge-container {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.evo-badge {
+  display: inline-block;
+  padding: 5px 8px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  color: white;
+}
+
+.evo-card button {
+  background: none;
+  border: 1px solid var(--secondary-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.evo-card button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+} 

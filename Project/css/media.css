@@ -1,0 +1,168 @@
+/* media.css - Медиа-запросы для адаптивности */
+
+/* Большие ноутбуки и десктопы */
+@media (max-width: 1199.98px) {
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+}
+
+/* Планшеты и маленькие ноутбуки */
+@media (max-width: 991.98px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+  
+  #user-panel {
+    margin-top: 15px;
+  }
+  
+  #home {
+    height: 70vh;
+  }
+  
+  #about h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+  
+  footer h5::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-info, .footer-contacts {
+    text-align: center;
+  }
+}
+
+/* Мобильные устройства и маленькие планшеты */
+@media (max-width: 767.98px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+  }
+  
+  #user-panel {
+    align-items: baseline;
+  }
+  
+  #welcomeMessage {
+    margin-bottom: 10px;
+  }
+  
+  #home {
+    height: 60vh;
+  }
+  
+  .menu-toggle {
+    display: block;
+    z-index: 1001;
+  }
+  
+  #navbarNav {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background-color: var(--dark-color);
+    padding: 15px;
+    flex-direction: column;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+  }
+  
+  #navbarNav.show {
+    height: auto;
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  #navbarNav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  #navbarNav ul li {
+    margin: 5px 0;
+  }
+  
+  #how-to-play .row, #about .row {
+    flex-direction: column;
+  }
+  
+  .control-key {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .game-stats {
+    flex-direction: column;
+  }
+  
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+/* Смартфоны */
+@media (max-width: 575.98px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  #home {
+    height: 50vh;
+  }
+  
+  section {
+    padding: 30px 0;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  .game-controls button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .stat-card {
+    padding: 10px;
+  }
+  
+  .stat-card p {
+    font-size: 1.4rem;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ландшафтный режим для мобильных */
+@media (max-height: 500px) and (orientation: landscape) {
+  #home {
+    height: auto;
+    padding: 60px 0;
+  }
+  
+  section {
+    padding: 20px 0;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+} 

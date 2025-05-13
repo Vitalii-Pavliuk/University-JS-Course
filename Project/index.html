@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake Game - Класична Гра Змійка</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/evolution.css">
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+  <nav id="main-nav">
+    <div class="container">
+      <a href="#home" class="logo">
+        <i class="bi bi-joystick"></i>
+        <span>Snake Game</span>
+      </a>
+      <button class="menu-toggle" aria-label="Переключить навигацию">
+        <i class="bi bi-list"></i>
+      </button>
+      <div id="navbarNav">
+        <ul>
+          <li><a href="#home">Головна</a></li>
+          <li><a href="#about">Про гру</a></li>
+          <li><a href="#snake-evolution">Еволюція Snake</a></li>
+          <li><a href="#how-to-play">Як грати</a></li>
+          <li><a href="#game-section">Грати</a></li>
+        </ul>
+        <div id="user-panel">
+          <div id="welcomeMessage"></div>
+          <div>
+            <input type="text" id="userName" placeholder="Ваше ім'я">
+            <button id="loginBtn">Увійти</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home">
+      <div class="hero">
+        <h1>Snake Game</h1>
+        <p>Класична гра "Змійка" - одна з найпопулярніших аркадних ігор усіх часів</p>
+        <a href="#game-section" class="btn-play">Грати зараз</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2>Про гру Snake</h2>
+        <div class="row">
+          <div class="history-container">
+            <h3>Історія гри</h3>
+            <p>Snake — культова відеогра, яка з'явилася в кінці 1970-х років. Проте найбільшу популярність вона набула в 1997 році, коли була попередньо встановлена на мобільні телефони Nokia.</p>
+            <p>Гра стала одним із найвпізнаваніших символів мобільних ігор і зробила значний внесок у розвиток ігрової індустрії. Навіть сьогодні, через десятиліття після своєї появи, Snake залишається популярною та улюбленою грою багатьох.</p>
+            <p>За роки існування з'явилося багато варіацій гри з різними графічними ефектами та ігровими режимами, але основний принцип залишається незмінним — керувати змійкою, збирати їжу і не врізатися в перешкоди.</p>
+          </div>
+          <div class="facts-container">
+            <div class="card">
+              <h3>Цікаві факти</h3>
+              <ul class="facts-list">
+                <li><i class="bi bi-check-circle-fill"></i>Перший варіант гри під назвою "Blockade" з'явився на аркадних автоматах у 1976 році</li>
+                <li><i class="bi bi-check-circle-fill"></i>В оригінальній версії для Nokia змійка складалася з прямокутних блоків</li>
+                <li><i class="bi bi-check-circle-fill"></i>В Книгу рекордів Гіннеса внесений рекорд найдовшої безперервної гри в Snake — 68 годин</li>
+                <li><i class="bi bi-check-circle-fill"></i>Нині гра Snake має безліч версій для всіх платформ — від веб-браузерів до сучасних консолей</li>
+                <li><i class="bi bi-check-circle-fill"></i>Найдовша змійка в класичній грі на Nokia могла зайняти весь екран, її довжина становила 255 блоків</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="snake-evolution">
+      <div class="container">
+        <h2>Еволюція Гри Snake</h2>
+        
+        <div id="evolutionList" class="cards-grid">
+        </div>
+        
+        <div class="modal fade" id="evolutionModal" tabindex="-1" aria-labelledby="evolutionModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="evolutionModalLabel">Деталі версії</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" id="evolutionModalContent">
+                <div class="row">
+                  <div class="col-md-6">
+                    <img src="images/snake-nokia.jpg" id="modalImage" alt="Версія гри">
+                  </div>
+                  <div class="col-md-6">
+                    <h4 id="modalTitle">Nokia Snake (1997)</h4>
+                    <div class="modal-badges">
+                      <span id="modalPlatform">Мобільна</span>
+                      <span id="modalYear">1997</span>
+                    </div>
+                    <p id="modalDescription"></p>
+                    <h5>Особливості:</h5>
+                    <ul id="modalFeatures"></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn-close-modal" data-bs-dismiss="modal">Закрити</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-to-play">
+      <div class="container">
+        <h2>Як грати в Snake</h2>
+        <div class="row">
+          <div class="gameplay-container">
+            <img src="images/snake-gameplay.gif" alt="Snake Gameplay">
+          </div>
+          <div class="rules-container">
+            <div class="card">
+              <h3>Правила гри</h3>
+              <ul class="rules-list">
+                <li><i class="bi bi-arrow-right-circle-fill"></i>Використовуйте клавіші зі стрілками для керування змійкою</li>
+                <li><i class="bi bi-arrow-right-circle-fill"></i>Збирайте їжу (зелені яблука), щоб рости і набирати очки</li>
+                <li><i class="bi bi-arrow-right-circle-fill"></i>Уникайте зіткнення зі стінами</li>
+                <li><i class="bi bi-arrow-right-circle-fill"></i>Не врізайтеся у власне тіло</li>
+                <li><i class="bi bi-arrow-right-circle-fill"></i>З кожним з'їденим яблуком ви отримуєте очки і змійка стає довшою та швидшою</li>
+                <li><i class="bi bi-arrow-right-circle-fill"></i>Гра закінчується, коли ви зіткнетеся зі стіною або власним тілом</li>
+              </ul>
+              <h4>Керування</h4>
+              <div class="controls">
+                <div class="control-key">↑</div>
+                <div class="control-key">←</div>
+                <div class="control-key">↓</div>
+                <div class="control-key">→</div>
+              </div>
+              <p class="mobile-hint">На мобільних пристроях: проведіть пальцем у бажаному напрямку</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="game-section">
+      <div class="container">
+        <h2>Грати Snake</h2>
+        <p>Почніть гру і спробуйте встановити новий рекорд!</p>
+        
+        <div class="game-container">
+          <canvas id="canvas"></canvas>
+          <div class="game-controls">
+            <button id="startGameBtn">Почати гру</button>
+            <button id="restartBtn">Нова гра</button>
+          </div>
+
+          <div class="game-stats">
+            <div class="stat-card">
+              <h5>Поточний рахунок</h5>
+              <p id="currentScore">0</p>
+            </div>
+            <div class="stat-card">
+              <h5>Рекорд</h5>
+              <p id="highScore">0</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <h5>Snake Game</h5>
+          <p>Класична гра для всіх поколінь</p>
+        </div>
+        <div class="footer-contacts">
+          <h5>Контакти</h5>
+          <ul>
+            <li><i class="bi bi-envelope"></i>vitalii.pavliuk.22a@pnu.edu.ua</li>
+            <li><i class="bi bi-envelope"></i>dmytro.naumets.22@pnu.edu.ua </li>
+            <li><i class="bi bi-github"></i><a href="https://github.com/Vitalii-Pavliuk/University-JS-Course">GitHub репозиторій</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="footer-copyright">
+        <p>&copy; 2025 Snake Game. Всі права захищені.</p>
+        <p>Розроблено з ❤️ студентами Віталієм та Дмитром</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/user.js"></script>
+  <script src="js/evolution.js"></script>
+  <script src="js/snake.js"></script>
+</body>
+</html>
