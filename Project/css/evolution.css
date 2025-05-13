@@ -1,13 +1,10 @@
-/* evolution.css - Секция эволюции игры Snake */
 
-/* Сетка карточек */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 25px;
 }
 
-/* Карточка эволюции */
 .evo-card {
   transition: transform 0.3s, box-shadow 0.3s;
   border: 1px solid rgba(0, 0, 0, 0.1);

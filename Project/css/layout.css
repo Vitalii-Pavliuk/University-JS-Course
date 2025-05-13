@@ -1,6 +1,3 @@
-/* layout.css - Структура сайта */
-
-/* Навигация */
 #main-nav {
   background-color: var(--dark-color);
   position: fixed;
@@ -25,6 +22,7 @@
   font-family: 'Pixelify Sans', sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
+  z-index: 1001;
 }
 
 .logo i {
@@ -39,6 +37,7 @@
   font-size: 1.5rem;
   cursor: pointer;
   padding: 5px;
+  z-index: 1001;
 }
 
 .menu-toggle i {
@@ -89,7 +88,6 @@
   left: 0;
 }
 
-/* Секция главная */
 #home {
   position: relative;
   background-color: #111;
@@ -137,7 +135,6 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Секция как играть */
 #how-to-play {
   background-color: white;
 }
@@ -164,12 +161,10 @@
   padding: 0 15px;
 }
 
-/* Секция эволюция */
 #snake-evolution {
   background-color: var(--bg-color);
 }
 
-/* Секция о игре */
 #about {
   background-color: white;
 }
@@ -190,13 +185,11 @@
   padding: 0 15px;
 }
 
-/* Секция с игрой */
 #game-section {
   background-color: var(--bg-color);
   text-align: center;
 }
 
-/* Футер */
 footer {
   background-color: var(--dark-color);
   color: white;

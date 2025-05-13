@@ -19,7 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function setupMenuToggle() {
   if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
+    navbarNav.classList.remove('show');
+    document.body.style.overflow = '';
+    
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       navbarNav.classList.toggle('show');
       if (navbarNav.classList.contains('show')) {
         document.body.style.overflow = 'hidden';
@@ -37,11 +41,18 @@ function setupMenuToggle() {
     });
     
     document.addEventListener('click', (event) => {
-      if (!event.target.closest('#navbarNav') && !event.target.closest('.menu-toggle')) {
-        if (navbarNav.classList.contains('show')) {
-          navbarNav.classList.remove('show');
-          document.body.style.overflow = '';
-        }
+      if (navbarNav.classList.contains('show') && 
+          !event.target.closest('#navbarNav') && 
+          !event.target.closest('.menu-toggle')) {
+        navbarNav.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    });
+    
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && navbarNav.classList.contains('show')) {
+        navbarNav.classList.remove('show');
+        document.body.style.overflow = '';
       }
     });
   }

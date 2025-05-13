@@ -1,6 +1,4 @@
-/* components.css - Компоненты интерфейса */
 
-/* Карточки */
 .card {
   background: white;
   border-radius: 8px;
@@ -16,7 +14,6 @@
   padding: 25px;
 }
 
-/* Кнопки */
 .btn-play {
   display: inline-block;
   padding: 12px 24px;
@@ -43,7 +40,6 @@
   cursor: pointer;
 }
 
-/* Формы пользователя */
 #user-panel {
   display: flex;
   align-items: center;
@@ -61,6 +57,7 @@
   color: white;
   border-radius: 4px;
   margin-right: 8px;
+  max-width: 100%; 
 }
 
 #userName::placeholder {
@@ -76,7 +73,29 @@
   cursor: pointer;
 }
 
-/* Компоненты правил игры */
+@media (max-width: 767.98px) {
+  #user-panel {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  #welcomeMessage {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  #user-panel > div {
+    width: 100%;
+    display: flex;
+  }
+  
+  #userName {
+    flex-grow: 1;
+    margin-right: 8px;
+  }
+}
+
 .rules-list {
   list-style-type: none;
   padding: 0;
@@ -121,7 +140,6 @@
   color: #666;
 }
 
-/* Компоненты раздела "О игре" */
 .facts-list {
   list-style-type: none;
   padding: 0;
@@ -138,7 +156,6 @@
   margin-right: 10px;
 }
 
-/* Модальное окно */
 .modal-dialog {
   max-width: 800px;
   margin: 30px auto;

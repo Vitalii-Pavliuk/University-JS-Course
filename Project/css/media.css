@@ -1,13 +1,9 @@
-/* media.css - Медиа-запросы для адаптивности */
-
-/* Большие ноутбуки и десктопы */
 @media (max-width: 1199.98px) {
   .hero h1 {
     font-size: 3.5rem;
   }
 }
 
-/* Планшеты и маленькие ноутбуки */
 @media (max-width: 991.98px) {
   .hero h1 {
     font-size: 3rem;
@@ -36,7 +32,6 @@
   }
 }
 
-/* Мобильные устройства и маленькие планшеты */
 @media (max-width: 767.98px) {
   .hero h1 {
     font-size: 2.5rem;
@@ -74,6 +69,7 @@
     height: 0;
     overflow: hidden;
     transition: height 0.3s ease;
+    visibility: hidden;
   }
   
   #navbarNav.show {
@@ -81,6 +77,7 @@
     max-height: calc(100vh - 56px);
     overflow-y: auto;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    visibility: visible;
   }
   
   #navbarNav ul {
@@ -111,7 +108,6 @@
   }
 }
 
-/* Смартфоны */
 @media (max-width: 575.98px) {
   .hero h1 {
     font-size: 2rem;
@@ -151,7 +147,6 @@
   }
 }
 
-/* Ландшафтный режим для мобильных */
 @media (max-height: 500px) and (orientation: landscape) {
   #home {
     height: auto;
